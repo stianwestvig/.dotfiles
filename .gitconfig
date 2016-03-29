@@ -1,6 +1,6 @@
 [user]
-	name = Niels Henrik Hagen
-	email = nhhagen@gmail.com
+	name = Stian Westvig
+	email = stian.westvig@bouvet.no
 [color]
 	ui = auto
 	ui = true
@@ -16,7 +16,7 @@
 	d = difftool
 	ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
 [github]
-	user = nhhagen
+	user = stianwestvig
 [diff]
 	tool = vimdiff
 [difftool]
