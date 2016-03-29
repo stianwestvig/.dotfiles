@@ -4,7 +4,7 @@ HELPDIR=/usr/local/share/zsh/help
 
 # export TERM=xterm-256color-italic
 
-export JAVA_HOME=$(/usr/libexec/java_home)
+# export JAVA_HOME=$(/usr/libexec/java_home)
 export PATH=$JAVA_HOME/bin:/usr/local/bin:$PATH
 export PATH=$HOME/.npm-packages/bin:/usr/local/share/npm/bin:$PATH
 export PATH=~/bin:$PATH
@@ -24,12 +24,15 @@ HISTIGNOR='top-commands'
 # setopt hist_reduce_blanks
 # setopt hist_save_no_dups
 # setopt hist_verify
-# setopt inc_append_history
 # setopt no_hist_allow_clobber
 # setopt no_hist_beep
-# setopt share_history
+# Appends every command to the history file once it is executed
+setopt inc_append_history
+# Reloads the history whenever you use it
+setopt share_history
 unsetopt beep
 bindkey -v
+bindkey '^R' history-incremental-search-backward
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '~/.zshrc'
@@ -38,9 +41,9 @@ if [ -d `brew --prefix`/share/zsh-completions ]; then
     fpath=(`brew --prefix`/share/zsh-completions $fpath)
 fi
 
-#if [ -f `brew --prefix`zsh/site-functions/git-flow-completion.zsh ]; then
-#    source `brew --prefix`zsh/site-functions/git-flow-completion.zsh
-#fi
+if [ -f `brew --prefix`zsh/site-functions/git-flow-completion.zsh ]; then
+    source `brew --prefix`zsh/site-functions/git-flow-completion.zsh
+fi
 
 if [ -f `brew --prefix`/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
     source `brew --prefix`/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
