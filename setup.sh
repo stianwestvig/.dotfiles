@@ -16,6 +16,7 @@ ln -Ffs ~/.dotfiles/.bash_prompt ~/.bash_prompt
 if [ "$SYSTEM_TYPE" == "$OSX" ]; then
     brew tap Goles/battery
     brew update && brew upgrade --all
+
     packages=(
         cmake
         zsh
@@ -31,6 +32,16 @@ if [ "$SYSTEM_TYPE" == "$OSX" ]; then
         wget
         the_silver_searcher
         battery
+        qlcolorcode
+        qlstephen
+        qlmarkdown
+        quicklook-json
+        qlprettypatch
+        quicklook-csv
+        betterzipql
+        qlimagesize
+        webpquicklook
+        suspicious-package
     )
     for package in ${packages[*]}; do
         brew install $package
