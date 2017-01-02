@@ -6,14 +6,20 @@
 	ui = true
 [core]
 	autocrlf = input
-	editor = vim
+	editor = "atom --wait"
+	excludesfile = /Users/stian.westvig/.gitignore_global
 [push]
 	default = simple
 [log]
 	date = relative
 [alias]
 	lg = log --date-order --graph --decorate --pretty=format:'%C(yellow)%h%Creset %C(magenta)%d%Creset %s %C(blue)(%an)%Creset %C(green)%cr%Creset'
-	d = difftool
+	lga = log --all --graph --decorate --pretty=format:'%C(yellow)%h%Creset - %C(green)%cr%Creset -%C(magenta)%d%Creset %s %C(blue)(%an)%Creset'
+  d = difftool
+  co = checkout
+  pf = push --force-with-lease
+  pr = pull --rebase
+  s = status
 	ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
 [github]
 	user = stianwestvig
@@ -27,3 +33,9 @@
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

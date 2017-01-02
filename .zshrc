@@ -9,6 +9,9 @@ export PATH=$JAVA_HOME/bin:/usr/local/bin:$PATH
 export PATH=$HOME/.npm-packages/bin:/usr/local/share/npm/bin:$PATH
 export PATH=~/bin:$PATH
 
+# mono
+export PATH=/usr/local/bin:$PATH
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -98,3 +101,13 @@ source $HOME/.alias
 function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 
 function newproject() { curl https://raw.github.com/nhhagen/vagrant-dev-box/master/setup.sh | bash -s $@ ; }
+
+# Updates path for vnm installed via brew#
+source $(brew --prefix nvm)/nvm.sh
+export NVM_DIR=~/.nvm
+
+# The next line updates PATH for the Google Cloud SDK.
+source '/Users/stian.westvig/yes/google-cloud-sdk/path.zsh.inc'
+
+# The next line enables shell command completion for gcloud.
+source '/Users/stian.westvig/yes/google-cloud-sdk/completion.zsh.inc'
