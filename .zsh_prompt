@@ -8,7 +8,6 @@ local GIT_PROMPT=""
 
 function precmd() {
     git_prompt() {
-        local branch_prefix="\ue0a0"
         local branch="$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')" || return
         local git_status_clean="$(git status --porcelain 2> /dev/null)"
         local indexed_modified="$(echo -e "$git_status_clean" | grep "^M" | wc -l | awk '{print $1}')"
@@ -44,7 +43,7 @@ function precmd() {
 
         local result=""
         if [[ -n $branch ]]; then
-            result=" on %{$fg[magenta]%}$branch_prefix $branch%{$reset_color%}$workspace$staged$remote"
+            result=" on %{$fg[magenta]%} $branch%{$reset_color%}$workspace$staged$remote"
         fi
         echo "$result"
     }
