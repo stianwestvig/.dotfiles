@@ -55,7 +55,6 @@ export BOLD_CYAN
 export BOLD_WHITE
 
 function parse_git_branch {
-  branch_prefix="\ue0a0"
   branch=$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
   git_status_clean=$(git status --porcelain 2> /dev/null)
   indexed_modified=$(echo -e "$git_status_clean" | grep "^M" | wc -l | awk '{print $1}')
@@ -91,7 +90,7 @@ function parse_git_branch {
   fi
 
   if [ $branch ]; then
-    echo -e " on $MAGENTA$branch_prefix $branch$RESET$workspace$staged$remote"
+    echo -e " on $MAGENTA$branch$RESET$workspace$staged$remote"
   fi
 }
 
